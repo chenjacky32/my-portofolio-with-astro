@@ -1,11 +1,40 @@
 ---
-import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import AboutIntro from "../components/AboutIntro.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import GradientHeading from "../components/GradientHeading.astro";
+import { myServices, type MyServiceCard } from "../lib/utils";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="About | Jacky Chen - Portofolio">
+  <div
+    class="flex flex-col grow px-4 sm:px-5 lg:px-6 pt-4 sm:pt-6 animate-in fade-in slide-in-from-bottom-4 duration-700"
+  >
+    <AboutIntro
+      description="Fullstack Developer with an Information Systems background and practical experience across the modern stack (Next.js, React, Laravel, TypeScript, MySQL), I build robust, user-centric web applications. My background in internal audit and business analysis enables me to bridge technical solutions with real-world business needs. I combine clean code practices with AI-augmented workflows to build scalable software efficiently."
+      location="Medan, Indonesia"
+    />
+
+    <div
+      class="grow mt-4 pt-4 sm:pt-6 border-t border-glass-border-subtle animate-in slide-in-from-bottom-8 fade-in duration-700 delay-150"
+    >
+      <GradientHeading as="h4" class="my-2 text-base sm:text-lg xl:text-xl">
+        What I Do
+      </GradientHeading>
+
+      <div class="grid gap-3 lg:gap-4 my-3 sm:grid-cols-2">
+        {
+          myServices.map((service: MyServiceCard, index) => (
+            <ServiceCard
+              icon={service.icon}
+              title={service.title}
+              description={service.description}
+              class="animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
+              style={`animation-delay: ${(index + 1) * 150}ms;`}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
 </Layout>
