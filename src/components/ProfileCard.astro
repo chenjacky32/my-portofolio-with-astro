@@ -1,0 +1,97 @@
+---
+import Icon from "./Icon.astro";
+import SocialLink from "./SocialLink.astro";
+import { socialLinks } from "../lib/utils";
+---
+
+<div
+  class="relative w-24 h-24 sm:w-28 sm:h-28 lg:w-24 lg:h-24 xl:w-32 xl:h-32 mx-auto mt-1 sm:mt-2 lg:mt-1 xl:mt-2"
+>
+  <div
+    class="w-full h-full rounded-full ring-2 ring-primary/60 ring-offset-2 sm:ring-offset-4 ring-offset-background overflow-hidden shadow-bloom-sm"
+  >
+    <img
+      src="https://avatars.githubusercontent.com/chenjacky32"
+      alt="Chen Jacky"
+      loading="lazy"
+      class="object-cover w-full h-full"
+    />
+  </div>
+
+  <!-- Animated Online Dot -->
+  <div class="absolute bottom-1.5 right-1.5 flex items-center justify-center">
+    <span class="relative flex w-4 h-4 sm:w-5 sm:h-5">
+      <span
+        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-online-glow opacity-75 duration-1000"
+      >
+      </span>
+      <span
+        class="relative inline-flex rounded-full w-4 h-4 sm:w-5 sm:h-5 bg-online border-1 border-background"
+      ></span>
+    </span>
+  </div>
+</div>
+
+<h3
+  class="mt-4 mb-1 lg:mt-3 lg:mb-0.5 xl:mt-4 xl:mb-1 text-lg sm:text-xl lg:text-lg xl:text-2xl font-semibold tracking-tight"
+>
+  Jacky <span
+    class="relative inline-block bg-gradient-primary bg-clip-text text-transparent"
+    >Chen</span
+  >
+</h3>
+<p
+  class="mb-3 lg:mb-2 xl:mb-3 text-xs sm:text-sm lg:text-xs xl:text-sm font-mono text-muted-foreground"
+>
+  Fullstack Developer | AI Native Engineer
+</p>
+
+<div
+  class="flex justify-center gap-4 my-3 lg:my-2 xl:my-3 text-muted-foreground"
+>
+  {
+    socialLinks.map((link) => (
+      <SocialLink href={link.href} aria-label={link.ariaLabel}>
+        <Icon
+          name={link.icon}
+          class="w-6 h-6 sm:w-7 sm:h-7 lg:w-5 lg:h-5 xl:w-7 xl:h-7"
+        />
+      </SocialLink>
+    ))
+  }
+</div>
+
+<div
+  class="py-2 sm:py-3 lg:py-1.5 xl:py-3 my-3 lg:my-2 xl:my-3 -mx-3 sm:-mx-4 text-xs sm:text-sm lg:text-[11px] xl:text-sm bg-glass-subtle border-y border-glass-border-subtle"
+>
+  <div class="flex items-center justify-center text-muted-foreground">
+    <Icon name="map-pin" class="mr-2 shrink-0 w-4 h-4" />
+    <span>Medan, Indonesia</span>
+  </div>
+  <div
+    class="flex items-center justify-center mt-1 lg:mt-0.5 xl:mt-1 font-mono text-muted-foreground break-all px-2"
+  >
+    <Icon name="mail" class="mr-2 shrink-0 w-4 h-4" />
+    chenjacky32@gmail.com
+  </div>
+</div>
+
+<div class="relative my-2 lg:my-1.5 xl:my-2">
+  <a
+    href="mailto:chenjacky@example.com"
+    class="inline-flex w-full items-center justify-center px-4 py-2 sm:py-2.5 lg:py-1.5 xl:py-2.5 text-sm sm:text-base lg:text-sm xl:text-base font-semibold rounded-full cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg dark:hover:shadow-white/10 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+  >
+    <Icon name="mail" class="inline mr-2 w-4 h-4" />
+    Let's Work Together
+  </a>
+</div>
+
+<div class="flex items-stretch gap-2 my-2 lg:my-1.5 xl:my-2">
+  <a
+    href="#"
+    class="flex flex-1 items-center justify-center gap-1 px-3 py-2 lg:py-1.5 xl:py-2 text-[11px] sm:text-xs font-mono rounded-full border border-glass-border text-muted-foreground bg-glass-panel hover:border-primary/60 hover:text-primary transition-colors duration-200"
+  >
+    <Icon name="download" class="w-3 h-3" />
+    <span>Download CV</span>
+  </a>
+</div>

@@ -1,0 +1,58 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ContactHeader from "../components/ContactHeader.astro";
+import ContactInfoCard from "../components/ContactInfoCard.astro";
+import FormField from "../components/FormField.astro";
+import FormButton from "../components/FormButton.astro";
+import { myContactInfo } from "../lib/utils";
+---
+
+<Layout title="Contact | Jacky Chen - Portofolio">
+  <div
+    class="px-4 sm:px-5 lg:px-6 py-4 sm:py-6 text-sm sm:text-base animate-in fade-in slide-in-from-bottom-4 duration-700"
+  >
+    <div class="max-w-2xl mx-auto">
+      <ContactHeader />
+
+      <div class="grid gap-4 sm:grid-cols-2 mb-8">
+        {
+          myContactInfo.map((info, index) => (
+            <ContactInfoCard
+              icon={info.icon}
+              title={info.title}
+              value={info.value}
+              href={info.href}
+              class="animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
+              style={`animation-delay: ${(index + 1) * 150}ms;`}
+            />
+          ))
+        }
+      </div>
+
+      <div
+        class="p-6 rounded-2xl bg-glass-card backdrop-blur-md border border-glass-border-subtle animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
+        style="animation-delay: 600ms;"
+      >
+        <form class="flex flex-col gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <FormField label="Name" id="name" placeholder="John Doe" />
+            <FormField
+              label="Email"
+              id="email"
+              type="email"
+              placeholder="john@example.com"
+            />
+          </div>
+          <FormField
+            label="Message"
+            id="message"
+            type="textarea"
+            placeholder="Your message here..."
+            rows={4}
+          />
+          <FormButton label="Send Message" icon="send" />
+        </form>
+      </div>
+    </div>
+  </div>
+</Layout>

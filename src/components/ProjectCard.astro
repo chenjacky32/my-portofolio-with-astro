@@ -1,0 +1,43 @@
+---
+import ProjectCardImage from "./ProjectCardImage.astro";
+import ProjectCardContent from "./ProjectCardContent.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+  github: string;
+  tags: string[];
+  class?: string;
+  style?: string | Record<string, any>;
+}
+
+const {
+  title,
+  description,
+  image,
+  link,
+  github,
+  tags,
+  class: className,
+  style,
+  ...rest
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    "group relative flex flex-col h-full rounded-xl p-px bg-gradient-glass-border hover:from-primary/30 hover:via-primary/10 dark:hover:from-white/20 dark:hover:via-white/5 transition-colors duration-300",
+    className,
+  ]}
+  style={style}
+  {...rest}
+>
+  <div
+    class="relative flex flex-col h-full overflow-hidden rounded-[11px] bg-glass-panel backdrop-blur-md backdrop-saturate-150 group-hover:shadow-bloom-sm transition-shadow duration-300"
+  >
+    <ProjectCardImage image={image} title={title} github={github} link={link} />
+    <ProjectCardContent title={title} description={description} tags={tags} />
+  </div>
+</div>

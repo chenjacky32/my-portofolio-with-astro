@@ -1,0 +1,21 @@
+---
+interface Props {
+  description: string;
+  location: string;
+}
+
+const { description, location } = Astro.props;
+---
+
+<div
+  class="mb-5 animate-in slide-in-from-bottom-4 fade-in duration-500 text-justify"
+>
+  <p
+    class="mb-3 text-sm sm:text-base lg:text-base xl:text-lg text-muted-foreground leading-relaxed"
+  >
+    {description}
+  </p>
+  <p class="text-xs sm:text-sm font-mono text-muted-foreground">
+    {location}
+  </p>
+</div>
