@@ -1,0 +1,25 @@
+---
+interface Props {
+  titlePrefix?: string;
+  titleGradient?: string;
+  description?: string;
+}
+
+const {
+  titlePrefix = "Let's ",
+  titleGradient = "Connect",
+  description = "I'm currently open to new opportunities, collaborations, and freelance projects. Whether you have a question or just want to say hi, I'll try my best to get back to you!",
+} = Astro.props;
+---
+
+<h5
+  class="mb-6 text-xl sm:text-2xl xl:text-3xl font-bold tracking-tight text-center"
+>
+  {titlePrefix}<span class="bg-gradient-primary bg-clip-text text-transparent"
+    >{titleGradient}</span
+  >
+</h5>
+
+<p class="text-center text-muted-foreground mb-8 leading-relaxed">
+  {description}
+</p>

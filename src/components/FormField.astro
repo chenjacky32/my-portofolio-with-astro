@@ -1,0 +1,56 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type InputType = HTMLAttributes<"input">["type"] | "textarea";
+
+interface Props {
+  label: string;
+  id: string;
+  name?: string;
+  type?: InputType;
+  placeholder?: string;
+  rows?: number;
+  required?: boolean;
+  class?: string;
+}
+
+const {
+  label,
+  id,
+  name = id,
+  type = "text",
+  placeholder,
+  rows = 4,
+  required = false,
+  class: className = "",
+} = Astro.props;
+
+const isTextarea = type === "textarea";
+---
+
+<div class:list={["flex flex-col gap-1.5", className]}>
+  <label for={id} class="text-sm font-medium text-muted-foreground">
+    {label}
+  </label>
+  {
+    isTextarea ? (
+      <textarea
+        id={id}
+        name={name}
+        rows={rows}
+        placeholder={placeholder}
+        required={required}
+        class="px-4 py-2 bg-glass-input border border-glass-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground placeholder:text-muted-foreground text-sm resize-none"
+      />
+    ) : (
+      <input
+        type={type as HTMLAttributes<"input">["type"]}
+        id={id}
+        name={name}
+        placeholder={placeholder}
+        required={required}
+        class="px-4 py-2 bg-glass-input border border-glass-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground placeholder:text-muted-foreground text-sm"
+      />
+    )
+  }
+</div>

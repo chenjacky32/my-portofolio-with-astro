@@ -1,0 +1,36 @@
+---
+import Icon from "./Icon.astro";
+import type { MyServiceCard } from "../lib/utils";
+
+interface Props {
+  icon: MyServiceCard["icon"];
+  title: string;
+  value: string;
+  href?: string;
+  class?: string;
+  style?: string | Record<string, any>;
+}
+
+const { icon, title, value, href, class: className, style, ...rest } = Astro.props;
+const Component = href ? "a" : "div";
+---
+
+<Component
+  href={href}
+  class:list={[
+    "group flex items-center gap-4 p-4 rounded-xl bg-glass-card backdrop-blur-md border border-glass-border hover:border-primary/50 hover:bg-secondary/40 transition-all",
+    className
+  ]}
+  style={style}
+  {...rest}
+>
+  <div
+    class="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary group-hover:scale-110 transition-transform"
+  >
+    <Icon name={icon} class="w-5 h-5" />
+  </div>
+  <div>
+    <p class="font-semibold text-foreground">{title}</p>
+    <p class="text-xs sm:text-sm text-muted-foreground">{value}</p>
+  </div>
+</Component>

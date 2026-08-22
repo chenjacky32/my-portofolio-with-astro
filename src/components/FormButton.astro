@@ -1,0 +1,29 @@
+---
+import Icon from "./Icon.astro";
+import type { MyServiceCard } from "../lib/utils";
+
+interface Props {
+  type?: "button" | "submit" | "reset";
+  icon?: MyServiceCard["icon"];
+  label?: string;
+  class?: string;
+}
+
+const {
+  type = "button",
+  icon = "send",
+  label = "Send Message",
+  class: className = "",
+} = Astro.props;
+---
+
+<button
+  type={type}
+  class:list={[
+    "mt-2 flex items-center justify-center gap-2 w-full px-6 py-2.5 text-sm font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg dark:hover:shadow-white/10 transition-all disabled:opacity-50 cursor-pointer",
+    className,
+  ]}
+>
+  {icon && <Icon name={icon} class="w-4 h-4" />}
+  {label}
+</button>
