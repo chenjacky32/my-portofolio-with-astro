@@ -1,0 +1,64 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  image: string;
+  title: string;
+  github?: string;
+  link?: string;
+}
+
+const { image, title, github, link } = Astro.props;
+---
+
+<div class="relative w-full aspect-video overflow-hidden">
+  {
+    image ? (
+      <img
+        src={image}
+        alt={title}
+        class="object-cover w-full h-full transition-transform duration-400 ease-out group-hover:scale-[1.03]"
+        loading="lazy"
+      />
+    ) : (
+      <div class="flex flex-col items-center justify-center w-full h-full bg-muted/40 text-muted-foreground/60 select-none">
+        <Icon
+          name="image"
+          class="w-10 h-10 mb-2 opacity-40 transition-transform duration-400 ease-out group-hover:scale-110"
+        />
+        <span class="text-xs font-mono tracking-wider opacity-60">
+          No Image
+        </span>
+      </div>
+    )
+  }
+
+  <div
+    class="pointer-events-none absolute inset-0 bg-linear-to-t from-background/90 via-background/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4 gap-4"
+  >
+    {
+      github && (
+        <a
+          href={github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="pointer-events-auto text-foreground hover:text-primary transition-colors bg-card/80 hover:bg-card p-2 rounded-full backdrop-blur-sm border border-border shadow-sm"
+        >
+          <Icon name="github" class="w-5 h-5" />
+        </a>
+      )
+    }
+    {
+      link && (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="pointer-events-auto text-foreground hover:text-primary transition-colors bg-card/80 hover:bg-card p-2 rounded-full backdrop-blur-sm border border-border shadow-sm"
+        >
+          <Icon name="external-link" class="w-5 h-5" />
+        </a>
+      )
+    }
+  </div>
+</div>

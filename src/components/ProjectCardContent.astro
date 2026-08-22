@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  tags: string[];
+}
+
+const { title, description, tags } = Astro.props;
+---
+
+<div class="grow p-4 sm:p-5 flex flex-col">
+  <h3
+    class="font-bold text-lg text-foreground mb-2 group-hover:text-primary dark:group-hover:text-primary transition-colors"
+  >
+    {title}
+  </h3>
+  <p class="text-sm text-muted-foreground mb-4 grow text-justify">
+    {description}
+  </p>
+
+  <div class="flex flex-wrap gap-2 mt-auto">
+    {
+      tags.map((tag) => (
+        <span class="px-2 py-1 text-[10px] sm:text-xs font-mono rounded bg-muted/60 text-muted-foreground border border-border/60">
+          # {tag}
+        </span>
+      ))
+    }
+  </div>
+</div>

@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { myProject } from "../lib/utils";
+---
+
+<Layout title="Projects | Jacky Chen - Portofolio">
+  <div
+    class="flex flex-col grow px-4 sm:px-5 lg:px-6 py-4 sm:py-6 animate-in fade-in slide-in-from-bottom-4 duration-700"
+  >
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+      {
+        myProject.map((project, index) => (
+          <ProjectCard
+            {...project}
+            class="scroll-animate opacity-0 fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
+            style={`animation-delay: ${(index + 1) * 150}ms;`}
+          />
+        ))
+      }
+    </div>
+  </div>
+</Layout>
