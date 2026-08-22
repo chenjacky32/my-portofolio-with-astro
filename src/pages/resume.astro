@@ -1,0 +1,75 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GradientHeading from "../components/GradientHeading.astro";
+import TimelineItem from "../components/TimelineItem.astro";
+import SkillList from "../components/SkillList.astro";
+import {
+  myEducation,
+  myExperience,
+  mySkills,
+  myToolsAndSoftwares,
+} from "../lib/utils";
+---
+
+<Layout title="Resume | Jacky Chen - Portofolio">
+  <div
+    class="px-4 sm:px-5 lg:px-6 py-4 sm:py-6 text-sm sm:text-base animate-in fade-in slide-in-from-bottom-4 duration-700"
+  >
+    <div class="grid gap-5 md:gap-6 md:grid-cols-2">
+      <!-- Education -->
+      <div>
+        <GradientHeading as="h5" class="mb-3 text-lg sm:text-xl xl:text-2xl">
+          Education
+        </GradientHeading>
+
+        {
+          myEducation.map((item, index) => (
+            <TimelineItem
+              title={item.title}
+              subTitle={item.subTitle}
+              period={item.period}
+              location={item.location}
+              description={item.description}
+              class="mb-6 animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
+              style={`animation-delay: ${(index + 1) * 150}ms;`}
+            />
+          ))
+        }
+      </div>
+
+      <!-- Experience -->
+      <div>
+        <GradientHeading as="h5" class="mb-3 text-lg sm:text-xl xl:text-2xl">
+          Experience
+        </GradientHeading>
+
+        {
+          myExperience.map((item, index) => (
+            <TimelineItem
+              title={item.title}
+              subTitle={item.subTitle}
+              period={item.period}
+              location={item.location}
+              bulletPoints={item.bulletPoints}
+              class="mb-6 animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
+              style={`animation-delay: ${(index + 1) * 150}ms;`}
+            />
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div
+      class="mt-8 pt-6 border-t border-glass-border-subtle scroll-animate opacity-0 slide-in-from-bottom-8 fade-in duration-700 delay-150"
+    >
+      <SkillList title="Languages & Frameworks" items={mySkills} />
+
+      <SkillList
+        title="Tools & Software"
+        items={myToolsAndSoftwares}
+        class="mt-6"
+      />
+    </div>
+  </div>
+</Layout>
