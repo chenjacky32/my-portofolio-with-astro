@@ -1,0 +1,6 @@
+interface:
+  display_name: "My Portofolio With Astro"
+  short_description: "Repo-specific patterns and workflows for my-portofolio-with-astro"
+  default_prompt: "Use the my-portofolio-with-astro repo skill to follow existing architecture, testing, and workflow conventions."
+policy:
+  allow_implicit_invocation: true
